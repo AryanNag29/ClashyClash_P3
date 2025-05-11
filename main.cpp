@@ -19,6 +19,7 @@ private:
     Vector2 worldPos;
     // 1 : facing right , -1:facing left
     float rightLeft{1.f};
+
     // Animation variable
     float runningTime{};
     int frame{};
@@ -30,6 +31,7 @@ private:
 void Character ::setScreenPos(int winWidth, int winHeight)
 {
     screenPos = {
+
         (float)winWidth / 2.0f - 4.0f * (0.5f * (float)texture.width / 6.0),
         (float)winHeight / 2.0f - 4.0f * (0.5f * (float)texture.height)};
 }
@@ -75,6 +77,7 @@ void Character ::tick(float deltaTime)
         }
     }
 }
+
 
 int main()
 {
