@@ -6,6 +6,7 @@
 int main()
 {
     // window  screen
+
     const int windowWidth = 385;
     const int windowHeight = 385;
 
@@ -14,7 +15,7 @@ int main()
     
     // LoadTextures background
     Texture2D background = LoadTexture("Backgrounds/worldmap.png");
-    Vector2 bgPos{0, 0};
+    Vector2 mapPos{0, 0};
 
     //Character instance/object
     Character knight;
@@ -27,14 +28,14 @@ int main()
 
         // Update game
         knight.tick(dT);
-        bgPos = Vector2Scale(knight.getWorldPos(), -1.f);
+        mapPos = Vector2Scale(knight.getWorldPos(), -1.f);
 
         // Draw
         BeginDrawing();
         ClearBackground(WHITE);
 
         // draw background
-        DrawTextureEx(background, bgPos, 0.0f, 4.0f, WHITE);
+        DrawTextureEx(background, mapPos, 0.0f, 4.0f, WHITE);
 
         // draw character
         knight.draw();
