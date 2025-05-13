@@ -14,8 +14,9 @@ int main()
     SetTargetFPS(60);
     
     // LoadTextures background
-    Texture2D background = LoadTexture("Backgrounds/worldmap.png");
+    Texture2D map = LoadTexture("Backgrounds/worldmap.png");
     Vector2 mapPos{0, 0};
+    const float mapScale{4.f};
 
     //Character instance/object
     Character knight;
@@ -35,15 +36,26 @@ int main()
         ClearBackground(WHITE);
 
         // draw background
-        DrawTextureEx(background, mapPos, 0.0f, 4.0f, WHITE);
+        DrawTextureEx(map, mapPos, 0.0f, mapScale, WHITE);
 
         // draw character
         knight.draw();
 
+        // Check map boundaries
+        Vector2 charPos = knight.getWorldPos();
+        if (charPos.x < 0.f || charPos.y < 0.f ||
+            charPos.x + windowWidth > mapScale * map.width ||
+            charPos.y + windowHeight > mapScale * map.height)
+        {
+            knight.undoMovement();
+        }
+
+
+
         EndDrawing();
     }
     
-    UnloadTexture(background);
+    UnloadTexture(map);
     CloseWindow();
     return 0;
 }

@@ -11,6 +11,7 @@ public:
     }
     void setScreenPos(int winWidth, int winHeight);
     void tick(float deltaTime);
+    void undoMovement();
     void draw();
     Character();
 
@@ -20,6 +21,9 @@ private:
     Texture2D run{LoadTexture("characters/knight_run_spritesheet.png")};
     Vector2 screenPos{};
     Vector2 worldPos{};
+
+    //mapbound check
+    Vector2 worldPosLastFrame{};
 
     //width and height
     float width{};

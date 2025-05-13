@@ -17,6 +17,7 @@ void Character::setScreenPos(int winWidth, int winHeight)
 
 void Character::tick(float deltaTime)
 {
+    worldPosLastFrame = worldPos;
     // window movement
     Vector2 direction{};
 
@@ -56,6 +57,8 @@ void Character::tick(float deltaTime)
             frame = 0;
         }
     }
+
+    
 }
 
 void Character::draw()
@@ -67,3 +70,6 @@ void Character::draw()
     DrawTexturePro(texture, source, dest, origin, 0.f, WHITE);
 }
 
+void Character::undoMovement(){
+    worldPos = worldPosLastFrame;
+}
