@@ -6,7 +6,6 @@
 int main()
 {
     // window  screen
-
     const int windowWidth = 385;
     const int windowHeight = 385;
 
