@@ -4,16 +4,14 @@
 class Character
 {
 public:
-    
     Vector2 getWorldPos()
     {
         return worldPos;
     }
-    void setScreenPos(int winWidth, int winHeight);
     void tick(float deltaTime);
     void undoMovement();
     void draw();
-    Character();
+    Character(int winWidth, int winHeight);
 
 private:
     Texture2D texture{LoadTexture("characters/knight_idle_spritesheet.png")};
@@ -22,13 +20,13 @@ private:
     Vector2 screenPos{};
     Vector2 worldPos{};
 
-    //mapbound check
+    // mapbound check
     Vector2 worldPosLastFrame{};
 
-    //width and height
+    // width and height
     float width{};
     float height{};
-    
+
     // 1 : facing right , -1:facing left
     float rightLeft{1.f};
 
@@ -38,5 +36,5 @@ private:
     const int maxFrame{6};
     float updateTime{1.0f / 12.0f};
     const float speed{4.f};
+    const float scale{4.f};
 };
-

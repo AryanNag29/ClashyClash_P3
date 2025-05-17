@@ -2,7 +2,6 @@
 #include "raymath.h"
 #include "Character.h"
 
-
 int main()
 {
     // window  screen
@@ -11,15 +10,14 @@ int main()
 
     InitWindow(windowWidth, windowHeight, "Clashy Clash");
     SetTargetFPS(60);
-    
+
     // LoadTextures background
     Texture2D map = LoadTexture("Backgrounds/worldmap.png");
     Vector2 mapPos{0, 0};
     const float mapScale{4.f};
 
-    //Character instance/object
-    Character knight;
-    knight.setScreenPos(windowWidth, windowHeight);
+    // Character instance/object
+    Character knight{windowWidth, windowHeight};
 
     while (!WindowShouldClose())
     {
@@ -49,11 +47,9 @@ int main()
             knight.undoMovement();
         }
 
-
-
         EndDrawing();
     }
-    
+
     UnloadTexture(map);
     CloseWindow();
     return 0;
