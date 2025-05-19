@@ -16,9 +16,10 @@ void Prop::Render(Vector2 knightPos)
 Rectangle Prop ::GetCollisionRec(Vector2 knightPos)
 {
     Vector2 screenPos = Vector2Subtract(worldPos, knightPos);
+    float pad{10.f};
     return Rectangle{
         screenPos.x,
         screenPos.y,
-        texture.width * scale,
-        texture.height * scale};
+        texture.width * scale -pad,
+        texture.height * scale -pad};
 }
