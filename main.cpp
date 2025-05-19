@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "raymath.h"
 #include "Character.h"
+#include "Prop.h"
 
 int main()
 {
@@ -12,12 +13,15 @@ int main()
     SetTargetFPS(60);
 
     // LoadTextures background
-    Texture2D map = LoadTexture("Backgrounds/worldmap.png");
+    Texture2D map = LoadTexture("Backgrounds/worldmap1.png");
     Vector2 mapPos{0, 0};
     const float mapScale{4.f};
 
     // Character instance/object
     Character knight{windowWidth, windowHeight};
+
+    //Prop instance
+    Prop rock{Vector2{0.f,0.f},LoadTexture("nature_tileset/Rock.png")};
 
     while (!WindowShouldClose())
     {
@@ -35,8 +39,18 @@ int main()
         // draw background
         DrawTextureEx(map, mapPos, 0.0f, mapScale, WHITE);
 
+        //render prop
+        rock.Render(knight.getWorldPos());
+
+
+
+        //chiharu
+        DrawText("Chiharu",windowWidth/2.f-30,windowHeight/2.f-50,20,RED);
+
         // draw character
         knight.draw();
+
+
 
         // Check map boundaries
         Vector2 charPos = knight.getWorldPos();
