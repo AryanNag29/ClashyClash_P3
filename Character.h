@@ -12,7 +12,7 @@ public:
     void undoMovement();
     void draw();
     Character(int winWidth, int winHeight);
-
+    Rectangle GetCollisionRec();
 private:
     Texture2D texture{LoadTexture("characters/knight_idle_spritesheet.png")};
     Texture2D idle{LoadTexture("characters/knight_idle_spritesheet.png")};

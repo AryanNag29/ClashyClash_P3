@@ -20,9 +20,11 @@ int main()
     // Character instance/object
     Character knight{windowWidth, windowHeight};
 
-    //Prop instance
-    Prop rock{Vector2{0.f,0.f},LoadTexture("nature_tileset/Rock.png")};
-
+   //prop instance
+    Prop props[2]{
+        Prop{Vector2{600.f, 300.f}, LoadTexture("nature_tileset/Rock.png")},
+        Prop{Vector2{400.f, 500.f}, LoadTexture("nature_tileset/Log.png")}
+    };
     while (!WindowShouldClose())
     {
         // delta time
@@ -39,18 +41,14 @@ int main()
         // draw background
         DrawTextureEx(map, mapPos, 0.0f, mapScale, WHITE);
 
-        //render prop
-        rock.Render(knight.getWorldPos());
+        //Draw the props
+        for(auto Prop : props){
+            Prop.Render(knight.getWorldPos());
+        }
 
-
-
-        //chiharu
-        DrawText("Chiharu",windowWidth/2.f-30,windowHeight/2.f-50,20,RED);
 
         // draw character
         knight.draw();
-
-
 
         // Check map boundaries
         Vector2 charPos = knight.getWorldPos();
@@ -60,6 +58,14 @@ int main()
         {
             knight.undoMovement();
         }
+
+        //collision
+        for(auto Prop : props){
+            if(CheckCollisionRecs(Prop.GetCollisionRec(knight.getWorldPos()),knight.GetCollisionRec())){
+                knight.undoMovement();
+            }
+        }
+
 
         EndDrawing();
     }
