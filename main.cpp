@@ -50,8 +50,6 @@ int main()
         // draw character
         knight.draw();
 
-        //draw text
-        DrawText("Himani",windowWidth/2- 25,windowHeight/2- 40,20,RED);
 
         // Check map boundaries
         Vector2 charPos = knight.getWorldPos();
@@ -68,8 +66,6 @@ int main()
                 knight.undoMovement();
             }
         }
-
-        DrawGrid(50,200);
 
 
 
