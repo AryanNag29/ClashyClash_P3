@@ -4,10 +4,7 @@
 class Character
 {
 public:
-    Vector2 getWorldPos()
-    {
-        return worldPos;
-    }
+    Vector2 getWorldPos();
     void tick(float deltaTime);
     void undoMovement();
     void draw();
