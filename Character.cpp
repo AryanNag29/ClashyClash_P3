@@ -11,10 +11,6 @@ Character::Character(int winWidth, int winHeight)
         static_cast<float>(winHeight) / 2.0f - scale * (0.5f * height)};
 }
 
-Vector2 Character :: getWorldPos(){
-        
-        return worldPos;
-}
 
 void Character::tick(float deltaTime)
 {
