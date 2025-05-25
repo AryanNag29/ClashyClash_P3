@@ -1,5 +1,6 @@
 #include "raylib.h"
 #include "raymath.h"
+#include "BaseCharacter.h"
 
 class Character: public BaseCharacter
 {
