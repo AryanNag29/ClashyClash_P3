@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include "Character.h"
 #include "raymath.h"
+#include "BaseCharacter.h"
 
 Character::Character(int winWidth, int winHeight)
 {

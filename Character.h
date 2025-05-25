@@ -1,7 +1,7 @@
 #include "raylib.h"
 #include "raymath.h"
 
-class Character
+class Character: public BaseCharacter
 {
 public:
     Vector2 getWorldPos(){
