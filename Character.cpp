@@ -13,6 +13,7 @@ Character::Character(int winWidth, int winHeight)
 }
 
 
+
 void Character::tick(float deltaTime)
 {
     worldPosLastFrame = worldPos;
