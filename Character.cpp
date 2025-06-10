@@ -35,7 +35,7 @@ void Character::tick(float deltaTime)
     if (Vector2Length(direction) != 0.0f)
     {
         // set worldPos = worldPos + direction
-        worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(direction), 6.f));
+        worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(direction), speed)); //here speed of character is also defined
         // if else ternary operator for if else statement
         direction.x < 0.f ? rightLeft = -1.f : rightLeft = 1.f;
         texture = run;
@@ -56,27 +56,4 @@ void Character::tick(float deltaTime)
             frame = 0;
         }
     }
-}
-
-void Character::draw()
-{
-    // draw the char
-    Rectangle source{frame * static_cast<float>(texture.width) / 6.f, 0.f, rightLeft * width, height};
-    Rectangle dest{screenPos.x, screenPos.y, scale * width, scale * height};
-    Vector2 origin{};
-    DrawTexturePro(texture, source, dest, origin, 0.f, WHITE);
-}
-
-void Character::undoMovement()
-{
-    worldPos = worldPosLastFrame;
-}
-
-Rectangle Character::GetCollisionRec()
-{
-    return Rectangle{
-        screenPos.x,
-        screenPos.y,
-        width * scale,
-        height * scale};
 }
