@@ -35,7 +35,7 @@ void Character::tick(float deltaTime)
     if (Vector2Length(direction) != 0.0f)
     {
         // set worldPos = worldPos + direction
-        worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(direction), speed));
+        worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(direction), 6.f));
         // if else ternary operator for if else statement
         direction.x < 0.f ? rightLeft = -1.f : rightLeft = 1.f;
         texture = run;
