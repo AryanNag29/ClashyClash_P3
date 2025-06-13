@@ -30,3 +30,20 @@ Rectangle BaseCharacter::GetCollisionRec()
         width * scale,
         height * scale};
 }
+
+void BaseCharacter::tick(float deltaTime)
+{
+    worldPosLastFrame = worldPos;
+ 
+    // update animation frame
+    runningTime += deltaTime;
+    if (runningTime >= updateTime)
+    {
+        runningTime = 0.f;
+        frame++;
+        if (frame > maxFrame)
+        {
+            frame = 0;
+        }
+    }
+}

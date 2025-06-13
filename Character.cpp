@@ -12,11 +12,9 @@ Character::Character(int winWidth, int winHeight)
         static_cast<float>(winHeight) / 2.0f - scale * (0.5f * height)};
 }
 
-
-
-void Character::tick(float deltaTime)
+void Character :: tick(float deltaTime)
 {
-    worldPosLastFrame = worldPos;
+    BaseCharacter::tick(deltaTime);
     // window movement
     Vector2 direction{};
 
@@ -45,15 +43,5 @@ void Character::tick(float deltaTime)
         texture = idle;
     }
 
-    // update animation frame
-    runningTime += deltaTime;
-    if (runningTime >= updateTime)
-    {
-        runningTime = 0.f;
-        frame++;
-        if (frame > maxFrame)
-        {
-            frame = 0;
-        }
-    }
+    
 }

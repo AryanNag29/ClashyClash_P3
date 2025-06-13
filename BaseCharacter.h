@@ -11,6 +11,7 @@ public:
     void undoMovement();
     void draw();
     Rectangle GetCollisionRec();
+    virtual void tick(float deltaTime);
 
 protected:
     Texture2D texture;

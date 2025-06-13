@@ -14,15 +14,5 @@ Enemy::Enemy(Vector2 pos, Texture2D idle_texture, Texture2D run_texture)
 
 void Enemy::tick(float deltaTime)
 {
-    worldPosLastFrame = worldPos;
-    runningTime += deltaTime;
-    if (runningTime >= updateTime)
-    {
-        runningTime = 0.f;
-        frame++;
-        if (frame > maxFrame)
-        {
-            frame = 0;
-        }
-    }
+    BaseCharacter::tick(deltaTime);
 }
