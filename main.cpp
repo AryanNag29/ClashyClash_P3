@@ -22,8 +22,8 @@ int main()
     Character knight{windowWidth, windowHeight};
 
     //Enemy instance/object
-    Enemy enemy(Vector2{},LoadTexture("characters/goblin_idle_spritesheet.png"),LoadTexture("characters/goblin_run_spritesheet.png"));
-    
+    Enemy goblin(Vector2{},LoadTexture("characters/goblin_idle_spritesheet.png"),LoadTexture("characters/goblin_run_spritesheet.png"));
+    goblin.setTarget(&knight);
 
    //prop instance
     Prop props[2]{
@@ -36,6 +36,7 @@ int main()
     {
         // delta time
         float dT = GetFrameTime();
+        
 
         // Update game
         knight.tick(dT);
@@ -55,8 +56,8 @@ int main()
         // draw character
         knight.draw();
         //enemy functions
-        enemy.tick(dT);
-        enemy.draw();
+        goblin.tick(dT);
+        goblin.draw();
 
 
         // Check map boundaries
