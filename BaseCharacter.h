@@ -27,7 +27,7 @@ protected:
     int frame{};
     const int maxFrame{6};
     float updateTime{1.0f / 12.0f};
-    const float speed{4.f};
+    float speed{4.f};
     const float scale{4.f};
 };
 
