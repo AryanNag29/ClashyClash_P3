@@ -17,6 +17,7 @@ void BaseCharacter::draw()
     DrawTexturePro(texture, source, dest, origin, 0.f, WHITE);
 }
 
+
 void BaseCharacter::undoMovement()
 {
     worldPos = worldPosLastFrame;
@@ -46,4 +47,19 @@ void BaseCharacter::tick(float deltaTime)
             frame = 0;
         }
     }
+    //direction
+    if (Vector2Length(velocity) != 0.0f)
+    {
+        // set worldPos = worldPos + velocity
+        worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(velocity), speed)); //here speed of character is also defined
+        // if else ternary operator for if else statement
+        velocity.x < 0.f ? rightLeft = -1.f : rightLeft = 1.f;
+        texture = run;
+    }
+    else
+    {
+        texture = idle;
+    }
+    velocity={};
 }
+

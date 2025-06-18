@@ -29,6 +29,7 @@ protected:
     float updateTime{1.0f / 12.0f};
     float speed{4.f};
     const float scale{4.f};
+    Vector2 velocity{};
 };
 
 #endif

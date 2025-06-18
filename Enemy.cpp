@@ -17,17 +17,15 @@ void Enemy::tick(float deltaTime)
 {
 
     // Pseudocode for Enemy Ai chasing main character
-    // 1 get toTarget
-    Vector2 toTarget = Vector2Subtract(target->getScreenPos(), screenPos);
+    // 1 get velocity
+    velocity = Vector2Subtract(target->getScreenPos(), screenPos);
     // 2 Normalize |to Target|
-    toTarget = Vector2Normalize(toTarget);
     // 3 multiply |To Target| by speed
-    toTarget = Vector2Scale(toTarget, speed);
     // 4 move Enemy (set worldPos)
-    worldPos = Vector2Add(worldPos, toTarget);
-
     // for enemy location
     screenPos = Vector2Subtract(worldPos, target->getWorldPos());
-
+    //run animation for enemy
     BaseCharacter::tick(deltaTime);
+
+
 }

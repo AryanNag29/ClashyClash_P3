@@ -9,5 +9,4 @@ public:
     void setTarget(Character* character){target = character;}
 private:
  Character* target;
-
 };
