@@ -9,13 +9,7 @@ BaseCharacter::BaseCharacter() :
 {
 }
 
-void BaseCharacter::draw()
-{
-    Rectangle source{frame * static_cast<float>(texture.width) / 6.f, 0.f, rightLeft * width, height};
-    Rectangle dest{getScreenPos().x, getScreenPos().y, scale * width, scale * height};
-    Vector2 origin{};
-    DrawTexturePro(texture, source, dest, origin, 0.f, WHITE);
-}
+
 
 
 void BaseCharacter::undoMovement()
@@ -34,25 +28,23 @@ Rectangle BaseCharacter::GetCollisionRec()
 
 void BaseCharacter::tick(float deltaTime)
 {
-    worldPosLastFrame = worldPos;
- 
+worldPosLastFrame = worldPos;
+
     // update animation frame
     runningTime += deltaTime;
     if (runningTime >= updateTime)
     {
-        runningTime = 0.f;
         frame++;
+        runningTime = 0.f;
         if (frame > maxFrame)
-        {
             frame = 0;
-        }
     }
-    //direction
-    if (Vector2Length(velocity) != 0.0f)
+
+    if (Vector2Length(velocity) != 0.0)
     {
         // set worldPos = worldPos + velocity
-        worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(velocity), speed)); //here speed of character is also defined
-        // if else ternary operator for if else statement
+
+        worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(velocity), speed));
         velocity.x < 0.f ? rightLeft = -1.f : rightLeft = 1.f;
         texture = run;
     }
@@ -60,6 +52,12 @@ void BaseCharacter::tick(float deltaTime)
     {
         texture = idle;
     }
-    velocity={};
+    velocity = {};
+
+    // draw the character
+    Rectangle source{frame * width, 0.f, rightLeft * width, height};
+    Rectangle dest{getScreenPos().x, getScreenPos().y, scale * width, scale * height};
+    DrawTexturePro(texture, source, dest, Vector2{}, 0.f, WHITE);
+
 }
 

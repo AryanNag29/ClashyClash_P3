@@ -13,8 +13,6 @@ Enemy::Enemy(Vector2 pos, Texture2D idle_texture, Texture2D run_texture)
     speed = 3.5f;
 }
 
-
-
 void Enemy::tick(float deltaTime)
 {
 
@@ -25,13 +23,11 @@ void Enemy::tick(float deltaTime)
     // 3 multiply |To Target| by speed
     // 4 move Enemy (set worldPos)
     // for enemy location
-    //run animation for enemy
+    // run animation for enemy
     BaseCharacter::tick(deltaTime);
-
-
 }
-    // for enemy location
-Vector2 Enemy :: getScreenPos(){
+// for enemy location
+Vector2 Enemy ::getScreenPos()
+{
     return Vector2Subtract(worldPos, target->getWorldPos());
 }
-
