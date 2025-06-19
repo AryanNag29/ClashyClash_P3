@@ -12,7 +12,7 @@ BaseCharacter::BaseCharacter() :
 void BaseCharacter::draw()
 {
     Rectangle source{frame * static_cast<float>(texture.width) / 6.f, 0.f, rightLeft * width, height};
-    Rectangle dest{screenPos.x, screenPos.y, scale * width, scale * height};
+    Rectangle dest{getScreenPos().x, getScreenPos().y, scale * width, scale * height};
     Vector2 origin{};
     DrawTexturePro(texture, source, dest, origin, 0.f, WHITE);
 }
@@ -26,8 +26,8 @@ void BaseCharacter::undoMovement()
 Rectangle BaseCharacter::GetCollisionRec()
 {
     return Rectangle{
-        screenPos.x,
-        screenPos.y,
+        getScreenPos().x,
+        getScreenPos().y,
         width * scale,
         height * scale};
 }

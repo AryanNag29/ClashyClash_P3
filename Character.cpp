@@ -3,13 +3,19 @@
 #include "raymath.h"
 #include "BaseCharacter.h"
 
-Character::Character(int winWidth, int winHeight)
+Character::Character(int winWidth, int winHeight) :
+ windowHeight(winHeight),
+ windowWidth(winWidth)
 {
     width = texture.width / maxFrame;
     height = texture.height;
-    screenPos = {
-        static_cast<float>(winWidth) / 2.0f - scale * (0.5f * width),
-        static_cast<float>(winHeight) / 2.0f - scale * (0.5f * height)};
+}
+
+Vector2 Character :: getScreenPos(){
+    return Vector2{
+        static_cast<float>(windowWidth) / 2.0f - scale * (0.5f * width),
+        static_cast<float>(windowHeight) / 2.0f - scale * (0.5f * height)
+    };
 }
 
 void Character ::tick(float deltaTime)

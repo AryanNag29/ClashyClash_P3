@@ -12,6 +12,7 @@ public:
     void draw();
     Rectangle GetCollisionRec();
     virtual void tick(float deltaTime);
+    virtual Vector2 getScreenPos() = 0;
 
 protected:
     Texture2D texture;
