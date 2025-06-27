@@ -63,7 +63,6 @@ void Character ::tick(float deltaTime)
             weapon.height*scale
         };
         rotation = IsMouseButtonDown(MOUSE_LEFT_BUTTON) ? -35.f : 0.f;
-
     }
     //draw sword
     Rectangle source{0.f,0.f,static_cast<float>(weapon.width)*rightLeft,static_cast<float>(weapon.height)};

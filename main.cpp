@@ -76,6 +76,15 @@ int main()
             }
         }
 
+        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
+            if(CheckCollisionRecs(goblin.GetCollisionRec(),knight.getCollisionWeapon())){
+                goblin.setAlive(false);
+            }
+            else{
+                goblin.setAlive(true);
+            }
+        }
+
         EndDrawing();
     }
 
