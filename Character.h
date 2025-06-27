@@ -12,11 +12,13 @@ public:
     Character(int winWidth, int winHeight);
     virtual Vector2 getScreenPos() override;
     
+    
 
 private:
     int windowWidth{};
     int windowHeight{};
     Texture2D weapon{LoadTexture("characters/weapon_sword.png")};
+    Rectangle weaponCollisionRec{};
 };
 
 #endif
