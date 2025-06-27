@@ -12,6 +12,8 @@ public:
     Rectangle GetCollisionRec();
     virtual void tick(float deltaTime);
     virtual Vector2 getScreenPos() = 0;
+    bool getAlive(){return alive;}
+    void setAlive(bool IsAlive){alive = IsAlive;}
 
 protected:
     Texture2D texture;
@@ -30,6 +32,7 @@ protected:
     float speed{4.f};
     const float scale{4.f};
     Vector2 velocity{};
+    bool alive{true};
 };
 
 #endif
