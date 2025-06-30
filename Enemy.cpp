@@ -19,6 +19,10 @@ void Enemy::tick(float deltaTime)
     // Pseudocode for Enemy Ai chasing main character
     // 1 get velocity
     velocity = Vector2Subtract(target->getScreenPos(), getScreenPos());
+
+   if(Vector2Length(velocity)<radius){
+    velocity = {};
+   }
     // 2 Normalize |to Target|
     // 3 multiply |To Target| by speed
     // 4 move Enemy (set worldPos)

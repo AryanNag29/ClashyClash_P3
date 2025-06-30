@@ -23,8 +23,23 @@ int main()
     Character knight{windowWidth, windowHeight};
 
     // Enemy instance/object
-    Enemy goblin(Vector2{}, LoadTexture("characters/goblin_idle_spritesheet.png"), LoadTexture("characters/goblin_run_spritesheet.png"));
-    goblin.setTarget(&knight);
+    Enemy goblin{Vector2{800.f, 300.f},
+                 LoadTexture("characters/goblin_idle_spritesheet.png"),
+                 LoadTexture("characters/goblin_run_spritesheet.png")};
+
+    Enemy slime{
+        Vector2{700.f, 400.f},
+        LoadTexture("characters/slime_idle_sprite_sheet.png"),
+        LoadTexture("characters/slime_idle_sprite_sheet.png")};
+
+    Enemy *enemies[]{
+        &goblin,
+        &slime};
+
+    for (auto enemy : enemies)
+    {
+        enemy->setTarget(&knight);
+    }
 
     // prop instance
     Prop props[2]{
@@ -52,21 +67,24 @@ int main()
             Prop.Render(knight.getWorldPos());
         }
 
-        if(!knight.getAlive())// character not alive 
+        if (!knight.getAlive()) // character not alive
         {
-            DrawText("Game Over",windowWidth/2-90,windowHeight/2,40,RED);
+            DrawText("Game Over", windowWidth / 2 - 90, windowHeight / 2, 40, RED);
             EndDrawing();
             continue; // it will continue the game
         }
-        else //character is alive
+        else // character is alive
         {
             std::string knightHealth = "Health: ";
-            knightHealth.append(std::to_string(knight.getHealth()),0,5);
-            DrawText(knightHealth.c_str(),1.f,0.f,40,RED);
+            knightHealth.append(std::to_string(knight.getHealth()), 0, 5);
+            DrawText(knightHealth.c_str(), 1.f, 0.f, 40, RED);
         }
 
         // enemy functions
-        goblin.tick(dT);
+        for (auto enemy : enemies)
+        {
+            enemy->tick(dT);
+        }
 
         // Check map boundaries
         knight.tick(dT);
@@ -87,9 +105,14 @@ int main()
             }
         }
 
-        if(IsMouseButtonPressed(MOUSE_BUTTON_LEFT)){
-            if(CheckCollisionRecs(goblin.GetCollisionRec(),knight.getCollisionWeapon())){
-                goblin.setAlive(false);
+        if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
+        {
+            for (auto enemy : enemies)
+            {
+                if (CheckCollisionRecs(enemy->GetCollisionRec(), knight.getCollisionWeapon()))
+                {
+                    enemy->setAlive(false);
+                }
             }
         }
 
