@@ -12,7 +12,8 @@ public:
     Character(int winWidth, int winHeight);
     virtual Vector2 getScreenPos() override;
     Rectangle getCollisionWeapon(){return weaponCollisionRec;}
-    
+    float healthBar() const {return health;}
+    void takeDamage(float damage);
     
 
 private:
@@ -20,6 +21,7 @@ private:
     int windowHeight{};
     Texture2D weapon{LoadTexture("characters/weapon_sword.png")};
     Rectangle weaponCollisionRec{};
+    float health{100.f};
 };
 
 #endif

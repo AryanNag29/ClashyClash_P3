@@ -25,6 +25,9 @@ void Enemy::tick(float deltaTime)
     // for enemy location
     // run animation for enemy
     BaseCharacter::tick(deltaTime);
+    if(CheckCollisionRecs(target->GetCollisionRec(),GetCollisionRec())){
+        target->takeDamage(damagePerSec*GetFrameTime());
+    }
 }
 // for enemy location
 Vector2 Enemy ::getScreenPos()
