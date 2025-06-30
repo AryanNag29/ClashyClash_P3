@@ -8,7 +8,7 @@
 int main()
 {
     // window  screen
-    const int windowWidth = 385;
+    const int windowWidth = 385;//385
     const int windowHeight = 385;
 
     InitWindow(windowWidth, windowHeight, "Clashy Clash");
@@ -42,9 +42,17 @@ int main()
     }
 
     // prop instance
-    Prop props[2]{
+    Prop props[]{
         Prop{Vector2{600.f, 300.f}, LoadTexture("nature_tileset/Rock.png")},
-        Prop{Vector2{400.f, 500.f}, LoadTexture("nature_tileset/Log.png")}};
+        Prop{Vector2{800.f, 350.f}, LoadTexture("nature_tileset/Rock.png")},
+        Prop{Vector2{900.f, 700.f}, LoadTexture("nature_tileset/Rock.png")},
+        Prop{Vector2{489.f, 876.f}, LoadTexture("nature_tileset/Rock.png")},
+        Prop{Vector2{400.f, 500.f}, LoadTexture("nature_tileset/Log.png")},
+        Prop{Vector2{1302.f, 1390.f}, LoadTexture("nature_tileset/Log.png")},
+        Prop{Vector2{1354.f, 1245.f}, LoadTexture("nature_tileset/Log.png")},
+        Prop{Vector2{1024.f, 537.f}, LoadTexture("nature_tileset/Log.png")},
+        Prop{Vector2{1245.f, 1246.f}, LoadTexture("nature_tileset/Log.png")},
+        Prop{Vector2{1023.f, 785.f}, LoadTexture("nature_tileset/Log.png")}};
 
     while (!WindowShouldClose())
     {
