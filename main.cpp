@@ -80,9 +80,6 @@ int main()
             if(CheckCollisionRecs(goblin.GetCollisionRec(),knight.getCollisionWeapon())){
                 goblin.setAlive(false);
             }
-            else{
-                goblin.setAlive(true);
-            }
         }
 
         EndDrawing();

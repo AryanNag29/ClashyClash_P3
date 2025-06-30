@@ -73,3 +73,5 @@ void Character ::tick(float deltaTime)
 
 
 }
+
+void Character::takeDamage(float damage);
