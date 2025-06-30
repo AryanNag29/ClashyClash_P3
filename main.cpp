@@ -3,6 +3,7 @@
 #include "Character.h"
 #include "Enemy.h"
 #include "Prop.h"
+#include <string>
 
 int main()
 {
@@ -50,9 +51,19 @@ int main()
         {
             Prop.Render(knight.getWorldPos());
         }
-        // draw characte
 
-   
+        if(!knight.getAlive())// character not alive 
+        {
+            DrawText("Game Over",windowWidth/2-90,windowHeight/2,40,RED);
+            EndDrawing();
+            continue; // it will continue the game
+        }
+        else //character is alive
+        {
+            std::string knightHealth = "Health: ";
+            knightHealth.append(std::to_string(knight.getHealth()),0,5);
+            DrawText(knightHealth.c_str(),1.f,0.f,40,RED);
+        }
 
         // enemy functions
         goblin.tick(dT);

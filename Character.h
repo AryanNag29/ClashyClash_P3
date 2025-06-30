@@ -12,7 +12,7 @@ public:
     Character(int winWidth, int winHeight);
     virtual Vector2 getScreenPos() override;
     Rectangle getCollisionWeapon(){return weaponCollisionRec;}
-    float healthBar() const {return health;}
+    float getHealth() const {return health;}
     void takeDamage(float damage);
     
 

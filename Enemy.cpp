@@ -25,8 +25,10 @@ void Enemy::tick(float deltaTime)
     // for enemy location
     // run animation for enemy
     BaseCharacter::tick(deltaTime);
+
+    // it give damage to character
     if(CheckCollisionRecs(target->GetCollisionRec(),GetCollisionRec())){
-        target->takeDamage(damagePerSec*GetFrameTime());
+        target->takeDamage(damagePerSec*deltaTime);
     }
 }
 // for enemy location
