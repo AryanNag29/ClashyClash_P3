@@ -15,14 +15,16 @@ Enemy::Enemy(Vector2 pos, Texture2D idle_texture, Texture2D run_texture)
 
 void Enemy::tick(float deltaTime)
 {
-    if(!getAlive()) return;
+    if (!getAlive())
+        return;
     // Pseudocode for Enemy Ai chasing main character
     // 1 get velocity
     velocity = Vector2Subtract(target->getScreenPos(), getScreenPos());
 
-   if(Vector2Length(velocity)<radius){
-    velocity = {};
-   }
+    if (Vector2Length(velocity) < radius)
+    {
+        velocity = {};
+    }
     // 2 Normalize |to Target|
     // 3 multiply |To Target| by speed
     // 4 move Enemy (set worldPos)
@@ -31,8 +33,9 @@ void Enemy::tick(float deltaTime)
     BaseCharacter::tick(deltaTime);
 
     // it give damage to character
-    if(CheckCollisionRecs(target->GetCollisionRec(),GetCollisionRec())){
-        target->takeDamage(damagePerSec*deltaTime);
+    if (CheckCollisionRecs(target->GetCollisionRec(), GetCollisionRec()))
+    {
+        target->takeDamage(damagePerSec * deltaTime);
     }
 }
 // for enemy location

@@ -4,7 +4,8 @@
 #include "raylib.h"
 #include "raymath.h"
 
-class BaseCharacter {
+class BaseCharacter
+{
 public:
     BaseCharacter();
     Vector2 getWorldPos() { return worldPos; }
@@ -12,8 +13,8 @@ public:
     Rectangle GetCollisionRec();
     virtual void tick(float deltaTime);
     virtual Vector2 getScreenPos() = 0;
-    bool getAlive(){return alive;}
-    void setAlive(bool IsAlive){alive = IsAlive;}
+    bool getAlive() { return alive; }
+    void setAlive(bool IsAlive) { alive = IsAlive; }
 
 protected:
     Texture2D texture;

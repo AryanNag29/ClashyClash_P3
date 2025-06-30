@@ -2,15 +2,11 @@
 #include "raylib.h"
 #include "raymath.h"
 
-BaseCharacter::BaseCharacter() :
-    texture(LoadTexture("characters/knight_idle_spritesheet.png")),
-    idle(LoadTexture("characters/knight_idle_spritesheet.png")),
-    run(LoadTexture("characters/knight_run_spritesheet.png"))
+BaseCharacter::BaseCharacter() : texture(LoadTexture("characters/knight_idle_spritesheet.png")),
+                                 idle(LoadTexture("characters/knight_idle_spritesheet.png")),
+                                 run(LoadTexture("characters/knight_run_spritesheet.png"))
 {
 }
-
-
-
 
 void BaseCharacter::undoMovement()
 {
@@ -28,7 +24,7 @@ Rectangle BaseCharacter::GetCollisionRec()
 
 void BaseCharacter::tick(float deltaTime)
 {
-worldPosLastFrame = worldPos;
+    worldPosLastFrame = worldPos;
 
     // update animation frame
     runningTime += deltaTime;
@@ -58,6 +54,4 @@ worldPosLastFrame = worldPos;
     Rectangle source{frame * width, 0.f, rightLeft * width, height};
     Rectangle dest{getScreenPos().x, getScreenPos().y, scale * width, scale * height};
     DrawTexturePro(texture, source, dest, Vector2{}, 0.f, WHITE);
-
 }
-

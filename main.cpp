@@ -26,7 +26,7 @@ int main()
     Enemy goblin{Vector2{800.f, 300.f},
                  LoadTexture("characters/goblin_idle_spritesheet.png"),
                  LoadTexture("characters/goblin_run_spritesheet.png")};
-
+    // second enemy
     Enemy slime{
         Vector2{700.f, 400.f},
         LoadTexture("characters/slime_idle_sprite_sheet.png"),
